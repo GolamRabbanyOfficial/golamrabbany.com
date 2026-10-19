@@ -1,0 +1,71 @@
+---
+export const prerender = true;
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import HomePage from "@/components/HomePage";
+import { getSubstackPosts } from "@/lib/substack";
+import { existsSync } from "node:fs";
+import { DATA } from "@/data/resume";
+import { buildPersonJsonLd } from "@/lib/structured-data";
+
+// Each collection is a folder of markdown files (src/content/work/, etc).
+// Sorting by "id" sorts by filename, so 01-, 02-, 03- controls the order
+// they appear on the page.
+const workEntries = (await getCollection("work")).sort((a, b) =>
+  a.id.localeCompare(b.id)
+);
+const certificationEntries = (await getCollection("certifications")).sort((a, b) =>
+  a.id.localeCompare(b.id)
+);
+const certifications = certificationEntries.map((entry) => entry.data);
+const educationEntries = (await getCollection("education")).sort((a, b) =>
+  a.id.localeCompare(b.id)
+);
+const projectEntries = (await getCollection("projects")).sort((a, b) =>
+  a.id.localeCompare(b.id)
+);
+const hackathonEntries = (await getCollection("hackathons")).sort((a, b) =>
+  a.id.localeCompare(b.id)
+);
+
+// Flatten each entry into a plain object: { ...frontmatter, description: body }.
+// Plain objects are required here because these props cross into a
+// client:only React island, which can only receive serializable data.
+const work = workEntries.map((entry) => ({
+  ...entry.data,
+  description: entry.body?.trim() ?? "",
+}));
+const education = educationEntries.map((entry) => entry.data);
+const projects = projectEntries.map((entry) => ({
+  ...entry.data,
+  description: entry.body?.trim() ?? "",
+}));
+const hackathons = hackathonEntries.map((entry) => ({
+  ...entry.data,
+  description: entry.body?.trim() ?? "",
+}));
+// Latest Substack posts, fetched from the RSS feed at build time.
+const posts = await getSubstackPosts();
+
+// Menu items with a `file` (like the resume PDF) whose file isn't in public/
+// yet. The menu links those to their fallback instead.
+const missingMenuHrefs = DATA.heroMenu
+  .filter((item) => "file" in item && !existsSync(`public/${item.file}`))
+  .map((item) => item.href);
+
+// Structured data describing you, for search engines and AI assistants.
+const jsonLd = buildPersonJsonLd({ work, education, certifications, hackathons });
+---
+
+<Layout jsonLd={jsonLd}>
+  <HomePage
+    client:load
+    work={work}
+    education={education}
+    certifications={certifications}
+    projects={projects}
+    hackathons={hackathons}
+    posts={posts}
+    missingMenuHrefs={missingMenuHrefs}
+  />
+</Layout>

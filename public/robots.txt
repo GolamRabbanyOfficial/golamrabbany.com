@@ -1,0 +1,5 @@
+# All search engines and AI crawlers are welcome.
+User-agent: *
+Allow: /
+
+Sitemap: https://golamrabbany.com/sitemap-index.xml

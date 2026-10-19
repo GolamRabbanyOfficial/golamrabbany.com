@@ -1,0 +1,12 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import BlogList from "@/components/BlogList";
+import { DATA } from "@/data/resume";
+import { getSubstackPosts } from "@/lib/substack";
+
+const posts = await getSubstackPosts();
+---
+
+<Layout title={DATA.blog.heading} description={DATA.blog.text}>
+  <BlogList client:load posts={posts} />
+</Layout>
