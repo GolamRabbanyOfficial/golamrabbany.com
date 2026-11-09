@@ -45,15 +45,15 @@ function buildSectionComponents({
   about: (
     <section id="about">
       <div className="flex min-h-0 flex-col gap-y-4">
-        <BlurFade delay={BLUR_FADE_DELAY * 3}>
+        <BlurFade fade={false} delay={BLUR_FADE_DELAY * 3}>
           <h2 className="text-xl font-bold">{DATA.sections.about.heading}</h2>
         </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 4}>
+        <BlurFade fade={false} delay={BLUR_FADE_DELAY * 4}>
           <div className="prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
             <Markdown>{DATA.summary}</Markdown>
           </div>
         </BlurFade>
-        <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
+        <BlurFade fade={false} delay={BLUR_FADE_DELAY * 4.5}>
           <div className="flex flex-wrap gap-2">
             {Object.values(DATA.contact.social).map((social) => (
               <a

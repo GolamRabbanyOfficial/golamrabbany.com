@@ -1,28 +1,18 @@
 import { Icons } from "@/components/icons";
 import { Activity, Binary, BookOpen, FileText, House, Library, Network, ShieldAlert, ShieldCheck } from "lucide-react";
-import { ReactLight } from "@/components/ui/svgs/reactLight";
-import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
-import { Typescript } from "@/components/ui/svgs/typescript";
-import { Nodejs } from "@/components/ui/svgs/nodejs";
-import { Python } from "@/components/ui/svgs/python";
 import { Golang } from "@/components/ui/svgs/golang";
-import { Postgresql } from "@/components/ui/svgs/postgresql";
-import { Docker } from "@/components/ui/svgs/docker";
-import { Kubernetes } from "@/components/ui/svgs/kubernetes";
-import { Astro } from "@/components/ui/svgs/astro";
-import { Bash } from "@/components/ui/svgs/bash";
-import { AWS } from "@/components/ui/svgs/aws";
-import { Azure } from "@/components/ui/svgs/azure";
-import { GCP } from "@/components/ui/svgs/gcp";
-import { Linux } from "@/components/ui/svgs/linux";
 import { Terraform } from "@/components/ui/svgs/terraform";
-import { Github } from "@/components/ui/svgs/github";
-import { Jenkins } from "@/components/ui/svgs/jenkins";
-import { Nginx } from "@/components/ui/svgs/nginx";
-import { Prometheus } from "@/components/ui/svgs/prometheus";
-import { Elk } from "@/components/ui/svgs/elk";
-import { Burp } from "@/components/ui/svgs/burp";
-import { Ansible } from "@/components/ui/svgs/ansible";
+
+
+// Multi-colour skill logos are static files in public/skills/ rather than
+// inline SVG: they were most of the home page's HTML weight. Lazy-loaded
+// since the skills section is below the fold.
+function skillIcon(src: string) {
+  const SkillIcon = ({ className }: { className?: string }) => (
+    <img src={src} alt="" width={16} height={16} loading="lazy" decoding="async" className={className} />
+  );
+  return SkillIcon;
+}
 
 export const DATA = {
   name: "Golam Rabbany - Cloud Security Engineer",
@@ -103,34 +93,34 @@ export const DATA = {
     { src: "/photos/photo9.webp", alt: "Photo 9" },
   ],
   skills: [
-    { name: "AWS", icon: AWS },
-    { name: "Azure", icon: Azure },
-    { name: "GCP", icon: GCP },
-    { name: "Linux", icon: Linux },
-    { name: "Kubernetes", icon: Kubernetes },
-    { name: "Docker", icon: Docker },
+    { name: "AWS", icon: skillIcon("/skills/aws.svg") },
+    { name: "Azure", icon: skillIcon("/skills/azure.svg") },
+    { name: "GCP", icon: skillIcon("/skills/gcp.svg") },
+    { name: "Linux", icon: skillIcon("/skills/linux.svg") },
+    { name: "Kubernetes", icon: skillIcon("/skills/kubernetes.svg") },
+    { name: "Docker", icon: skillIcon("/skills/docker.svg") },
     { name: "Terraform", icon: Terraform },
-    { name: "Github", icon: Github },
-    { name: "Jenkins", icon: Jenkins },
-    { name: "Ansible", icon: Ansible },
-    { name: "Prometheus", icon: Prometheus },
-    { name: "ELK Stack", icon: Elk },
-    { name: "Burp Suite", icon: Burp },
+    { name: "Github", icon: skillIcon("/skills/github.svg") },
+    { name: "Jenkins", icon: skillIcon("/skills/jenkins.svg") },
+    { name: "Ansible", icon: skillIcon("/skills/ansible.svg") },
+    { name: "Prometheus", icon: skillIcon("/skills/prometheus.svg") },
+    { name: "ELK Stack", icon: skillIcon("/skills/elk-stack.svg") },
+    { name: "Burp Suite", icon: skillIcon("/skills/burp-suite.svg") },
     { name: "Splunk", icon: Activity },
     { name: "GuardDuty", icon: ShieldAlert },
     { name: "Security Hub", icon: ShieldCheck },
     { name: "Wireshark", icon: Network },
     { name: "Ghidra", icon: Binary },
-    { name: "Nginx", icon: Nginx },
-    { name: "Bash", icon: Bash },
-    { name: "Python", icon: Python },
-    { name: "Astro", icon: Astro },
-    { name: "React", icon: ReactLight },
-    { name: "Next.js", icon: NextjsIconDark },
-    { name: "Typescript", icon: Typescript },
-    { name: "Node.js", icon: Nodejs },
+    { name: "Nginx", icon: skillIcon("/skills/nginx.svg") },
+    { name: "Bash", icon: skillIcon("/skills/bash.svg") },
+    { name: "Python", icon: skillIcon("/skills/python.svg") },
+    { name: "Astro", icon: skillIcon("/skills/astro.svg") },
+    { name: "React", icon: skillIcon("/skills/react.svg") },
+    { name: "Next.js", icon: skillIcon("/skills/next-js.svg") },
+    { name: "Typescript", icon: skillIcon("/skills/typescript.svg") },
+    { name: "Node.js", icon: skillIcon("/skills/node-js.svg") },
     { name: "Go", icon: Golang },
-    { name: "Postgres", icon: Postgresql },
+    { name: "Postgres", icon: skillIcon("/skills/postgres.svg") },
   ],
   // Menu under your title on the home page. Add items here; each needs
   // href, label and a lucide-react icon (import it at the top of this file).
