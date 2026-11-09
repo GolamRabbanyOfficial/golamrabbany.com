@@ -7,6 +7,9 @@ interface BlurFadeTextProps {
   duration?: number;
   delay?: number;
   yOffset?: number;
+  // false = slide only, no opacity fade. Use above the fold: Chrome never
+  // counts an element first painted at opacity 0 as the LCP element.
+  fade?: boolean;
   // Wrapper element, e.g. "h1" for the page title.
   as?: "div" | "h1";
 }
@@ -19,11 +22,12 @@ const BlurFadeText = ({
   duration = 0.4,
   delay = 0,
   yOffset = 8,
+  fade = true,
   as: Wrapper = "div",
 }: BlurFadeTextProps) => (
   <Wrapper className="flex">
     <span
-      className={cn("blur-fade inline-block", className)}
+      className={cn(fade ? "blur-fade" : "slide-in", "inline-block", className)}
       style={
         {
           "--bf-delay": `${delay}s`,

@@ -7,6 +7,9 @@ interface BlurFadeProps {
   duration?: number;
   delay?: number;
   yOffset?: number;
+  // false = slide only, no opacity fade. Use above the fold: Chrome never
+  // counts an element first painted at opacity 0 as the LCP element.
+  fade?: boolean;
 }
 
 // Entrance fade driven by CSS (see .blur-fade in global.css), so it runs as
@@ -18,9 +21,10 @@ const BlurFade = ({
   duration = 0.4,
   delay = 0,
   yOffset = 6,
+  fade = true,
 }: BlurFadeProps) => (
   <div
-    className={cn("blur-fade", className)}
+    className={cn(fade ? "blur-fade" : "slide-in", className)}
     style={
       {
         "--bf-delay": `${0.04 + delay}s`,

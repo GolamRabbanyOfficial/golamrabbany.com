@@ -246,8 +246,17 @@
 .blur-fade {
   animation: blur-fade-in var(--bf-duration, 0.4s) ease-out var(--bf-delay, 0s) both;
 }
+@keyframes slide-in {
+  from {
+    transform: translateY(var(--bf-y, -6px));
+  }
+}
+.slide-in {
+  animation: slide-in var(--bf-duration, 0.4s) ease-out var(--bf-delay, 0s) both;
+}
 @media (prefers-reduced-motion: reduce) {
-  .blur-fade {
+  .blur-fade,
+  .slide-in {
     animation: none;
   }
 }

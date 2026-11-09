@@ -217,6 +217,7 @@ export default function HomePage({
           <div className="gap-2 gap-y-6 flex flex-col md:flex-row justify-between">
             <div className="gap-2 flex flex-col order-2 md:order-1">
               <BlurFadeText
+                fade={false}
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
                 yOffset={8}
@@ -224,15 +225,16 @@ export default function HomePage({
                 text={`Hi, I'm ${DATA.name.split(" ")[1]}`}
               />
               <BlurFadeText
+                fade={false}
                 className="text-muted-foreground max-w-[600px] md:text-lg lg:text-xl"
                 delay={BLUR_FADE_DELAY}
                 text={DATA.description}
               />
-              <BlurFade delay={BLUR_FADE_DELAY * 2}>
+              <BlurFade fade={false} delay={BLUR_FADE_DELAY * 2}>
                 <HeroMenu missing={missingMenuHrefs} />
               </BlurFade>
             </div>
-            <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
+            <BlurFade fade={false} delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
               {/* Plain <img> (not Radix Avatar) so it's in the server HTML and
                   starts loading immediately: it's the page's LCP element. */}
               <img
