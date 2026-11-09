@@ -17,6 +17,8 @@ export function MediaContainer({
     <div className={`ring-4 ring-muted w-full h-[300px] rounded-lg overflow-hidden flex items-center justify-center ${className}`}>
       {type === "image" ? (
         <img
+          loading="lazy"
+          decoding="async"
           src={src}
           alt={alt}
           className="w-full h-full object-cover object-center max-w-full max-h-full"

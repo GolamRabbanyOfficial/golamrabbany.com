@@ -28,12 +28,12 @@ const FOLDERS = { _astro: "assets", logos: "logos", projects: "projects" };
 for (const [from, to] of Object.entries(FOLDERS)) {
   if (existsSync(join(DIST, from))) cpSync(join(DIST, from), join(OUT, to), { recursive: true });
 }
-for (const file of ["favicon.svg", "picofme.png", "og_image.png", "apple-touch-icon.png", "resume.pdf"]) {
+for (const file of ["favicon.svg", "picofme.png", "picofme-256.webp", "og_image.png", "apple-touch-icon.png", "resume.pdf"]) {
   if (existsSync(join(DIST, file))) cpSync(join(DIST, file), join(OUT, file));
 }
 
 // Root-relative paths used by the site, and what they become in the staging copy.
-const ASSET_PREFIXES = ["_astro/", "logos/", "projects/", "photos/", "picofme.png", "og_image.png", "favicon.svg", "apple-touch-icon.png", "resume.pdf"];
+const ASSET_PREFIXES = ["_astro/", "logos/", "projects/", "photos/", "picofme.png", "picofme-256.webp", "og_image.png", "favicon.svg", "apple-touch-icon.png", "resume.pdf"];
 // In script bundles a bare "/" is often library code (path joins), so there
 // only `href:"/"` is treated as a link to the home page.
 function relativize(text, { isScript = false } = {}) {

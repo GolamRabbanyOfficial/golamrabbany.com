@@ -3,7 +3,7 @@ company: "Elite Cloud PTE. LTD."
 title: "Associate Cloud Engineer"
 href: "https://elite.cloud"
 location: "Taipei City 114, Taiwan"
-logoUrl: "/logos/elite-cloud.jpg"
+logoUrl: "/logos/elite-cloud.webp"
 start: "January 2025"
 ---
 

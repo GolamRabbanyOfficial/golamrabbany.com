@@ -1,87 +1,40 @@
+import type { CSSProperties } from "react";
 import { cn } from "@/lib/utils";
-import { motion, type Variants } from "motion/react";
-import { useMemo } from "react";
 
 interface BlurFadeTextProps {
   text: string;
   className?: string;
-  variant?: {
-    hidden: { y: number };
-    visible: { y: number };
-  };
   duration?: number;
-  characterDelay?: number;
   delay?: number;
   yOffset?: number;
-  animateByCharacter?: boolean;
   // Wrapper element, e.g. "h1" for the page title.
   as?: "div" | "h1";
 }
+
+// CSS-driven entrance fade (see .blur-fade in global.css). Text is visible
+// without JavaScript, which keeps it from delaying Largest Contentful Paint.
 const BlurFadeText = ({
   text,
   className,
-  variant,
   duration = 0.4,
-  characterDelay = 0.03,
   delay = 0,
   yOffset = 8,
-  animateByCharacter = false,
   as: Wrapper = "div",
-}: BlurFadeTextProps) => {
-  const defaultVariants: Variants = {
-    hidden: { y: -yOffset, opacity: 0, filter: "blur(8px)" },
-    visible: { y: 0, opacity: 1, filter: "blur(0px)" },
-  };
-  const combinedVariants = variant || defaultVariants;
-  const characters = useMemo(() => Array.from(text), [text]);
-
-  if (animateByCharacter) {
-    return (
-      <div className="flex">
-        {characters.map((char, i) => {
-          const charVariants: Variants = {
-            hidden: { y: -yOffset, opacity: 0, filter: "blur(8px)" },
-            visible: { y: 0, opacity: 1, filter: "blur(0px)" },
-          };
-          return (
-            <motion.span
-              key={i}
-              initial="hidden"
-              animate="visible"
-              variants={charVariants}
-              transition={{
-                duration,
-                delay: delay + i * characterDelay,
-                ease: "easeOut",
-              }}
-              className={cn("inline-block", className)}
-              style={{ width: char.trim() === "" ? "0.2em" : "auto" }}
-            >
-              {char}
-            </motion.span>
-          );
-        })}
-      </div>
-    );
-  }
-
-  return (
-    <Wrapper className="flex">
-      <motion.span
-        initial="hidden"
-        animate="visible"
-        variants={combinedVariants}
-        transition={{
-          duration,
-          delay,
-          ease: "easeOut",
-        }}
-        className={cn("inline-block", className)}
-      >
-        {text}
-      </motion.span>
-    </Wrapper>
-  );
-};
+}: BlurFadeTextProps) => (
+  <Wrapper className="flex">
+    <span
+      className={cn("blur-fade inline-block", className)}
+      style={
+        {
+          "--bf-delay": `${delay}s`,
+          "--bf-duration": `${duration}s`,
+          "--bf-y": `${-yOffset}px`,
+        } as CSSProperties
+      }
+    >
+      {text}
+    </span>
+  </Wrapper>
+);
 
 export default BlurFadeText;

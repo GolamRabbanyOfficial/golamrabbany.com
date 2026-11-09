@@ -14,6 +14,8 @@ function BadgeImage({ src, alt }: { src?: string; alt: string }) {
   }
   return (
     <img
+      loading="lazy"
+      decoding="async"
       src={src}
       alt={alt}
       className="size-20 md:size-24 object-contain"

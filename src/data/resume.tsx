@@ -38,6 +38,8 @@ export const DATA = {
   summary:
     "I started my cybersecurity journey in 2019, during COVID, focusing on hands-on learning, CTF competitions and creating content. Since then I've won [several national CTF championships](#hackathons), competed in 100+ national and international events, and authored challenges for international CTFs. I currently work as an [Associate Cloud Engineer and Cloud Content Engineer at Elite Cloud PTE. LTD.](#work), a multi-cloud CSP partner. Before that, I was a Cybersecurity Content Writer at BowTiedCyber LLC in the USA, writing about both offensive and defensive security. Outside work, I explore AI, cloud and cybersecurity, and share what I learn on my blog and YouTube channel. I also tutor, and have experience teaching international students.",
   avatarUrl: "/picofme.png",
+  // Small copy shown on the page (the PNG above stays for search engines).
+  avatarThumbUrl: "/picofme-256.webp",
   ogImage: "/og_image.png",
   sections: {
     about: { order: 1, enabled: true, heading: "About" },

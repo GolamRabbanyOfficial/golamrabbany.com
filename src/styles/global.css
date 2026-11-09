@@ -235,3 +235,19 @@
     @apply border-b-0;
   }
 }
+/* Entrance fade for BlurFade / BlurFadeText. Pure CSS so content paints
+   before JavaScript loads; opacity + transform only (GPU-composited). */
+@keyframes blur-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--bf-y, -6px));
+  }
+}
+.blur-fade {
+  animation: blur-fade-in var(--bf-duration, 0.4s) ease-out var(--bf-delay, 0s) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .blur-fade {
+    animation: none;
+  }
+}

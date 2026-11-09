@@ -112,6 +112,11 @@ const { baseFontSize } = CONFIG.typography;
     `}
     ></style>
 
+    <!-- Hero photo is the Largest Contentful Paint element: fetch it first -->
+    {Astro.url.pathname === "/" && (
+      <link rel="preload" as="image" href={DATA.avatarThumbUrl} type="image/webp" fetchpriority="high" />
+    )}
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

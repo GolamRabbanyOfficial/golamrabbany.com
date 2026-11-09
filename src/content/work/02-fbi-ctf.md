@@ -3,7 +3,7 @@ company: "Federal Bonk Investigations"
 title: "CTF Player (Only Events)"
 href: "https://www.facebook.com/fbictf/"
 location: "Dhaka, BD"
-logoUrl: "/logos/fbi-ctf.png"
+logoUrl: "/logos/fbi-ctf.webp"
 start: "July 2023"
 ---
 

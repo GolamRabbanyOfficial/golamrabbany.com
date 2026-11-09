@@ -2,7 +2,7 @@
 title: "ThreatLens"
 href: "/projects/threatlens.webp"
 dates: "In Progress"
-image: "/projects/threatlens.webp"
+image: "/projects/threatlens-800.webp"
 active: true
 technologies:
   - "Stratus Red Team"

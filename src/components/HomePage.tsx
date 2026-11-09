@@ -1,7 +1,6 @@
 import React from "react";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
 import Markdown from "react-markdown";
 import ContactSection from "@/components/section/contact-section";
@@ -103,6 +102,8 @@ function buildSectionComponents({
                 <div className="flex items-center gap-x-3 flex-1 min-w-0">
                   {edu.logoUrl ? (
                     <img
+                      loading="lazy"
+                      decoding="async"
                       src={edu.logoUrl}
                       alt={edu.school}
                       className="size-8 md:size-10 p-1 border rounded-full shadow ring-2 ring-border overflow-hidden object-contain flex-none"
@@ -232,10 +233,17 @@ export default function HomePage({
               </BlurFade>
             </div>
             <BlurFade delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
-              <Avatar className="size-24 md:size-32 border rounded-full shadow-lg ring-4 ring-muted">
-                <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-                <AvatarFallback>{DATA.initials}</AvatarFallback>
-              </Avatar>
+              {/* Plain <img> (not Radix Avatar) so it's in the server HTML and
+                  starts loading immediately: it's the page's LCP element. */}
+              <img
+                src={DATA.avatarThumbUrl}
+                alt={DATA.name}
+                width={256}
+                height={256}
+                fetchPriority="high"
+                decoding="async"
+                className="size-24 md:size-32 shrink-0 overflow-hidden object-cover border rounded-full shadow-lg ring-4 ring-muted bg-muted"
+              />
             </BlurFade>
           </div>
         </div>

@@ -30,6 +30,8 @@ export default function HackathonsSection({ items }: { items: HackathonItem[] })
               <TimelineConnectItem className="flex items-start justify-center">
                 {hackathon.image ? (
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={hackathon.image}
                     alt={hackathon.title}
                     className="size-10 bg-card z-10 shrink-0 overflow-hidden p-1 border rounded-full shadow ring-2 ring-border object-contain flex-none"

@@ -3,7 +3,7 @@ company: "EliteSploit"
 title: "Founder & Team Leader"
 href: "https://ctftime.org/team/141664"
 location: "Remote"
-logoUrl: "/logos/elitesploit.png"
+logoUrl: "/logos/elitesploit.webp"
 start: "December 2020"
 end: "August 2022"
 ---

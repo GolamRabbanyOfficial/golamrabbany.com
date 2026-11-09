@@ -35,6 +35,8 @@ export default function PhotosSection() {
               {col.map((photo, idx) => (
                 <BlurFade key={photo.src} delay={BLUR_FADE_DELAY * 14 + (colIdx * col.length + idx) * 0.05}>
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={photo.src}
                     alt={photo.alt}
                     className={`w-full rounded-xl object-cover ${colAspects[colIdx][idx] ?? "aspect-square"}`}

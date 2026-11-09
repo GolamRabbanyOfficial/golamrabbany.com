@@ -2,7 +2,7 @@
 title: "CloudGuard"
 href: "/projects/cloudguard.webp"
 dates: "In Progress"
-image: "/projects/cloudguard.webp"
+image: "/projects/cloudguard-800.webp"
 active: true
 technologies:
   - "AWS Organizations"
