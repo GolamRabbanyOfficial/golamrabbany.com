@@ -11,11 +11,12 @@ export function ModeToggle({ className }: { className?: string }) {
       type="button"
       variant="link"
       size="icon"
+      aria-label="Toggle dark mode"
       className={cn(className)}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
-      <SunIcon className="h-full w-full" />
-      <MoonIcon className="hidden h-full w-full" />
+      <SunIcon aria-hidden className="h-full w-full" />
+      <MoonIcon aria-hidden className="hidden h-full w-full" />
     </Button>
   );
 }
