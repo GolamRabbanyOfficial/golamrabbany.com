@@ -4,6 +4,8 @@ import { DATA } from "@/data/resume";
 import { CONFIG } from "@/data/config";
 import NavbarIsland from "@/components/NavbarIsland";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+// Hashed URL of the main text font, preloaded so it arrives with the HTML.
+import outfitLatinUrl from "@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2?url";
 
 interface Props {
   title?: string;
@@ -111,6 +113,9 @@ const { baseFontSize } = CONFIG.typography;
       }
     `}
     ></style>
+
+    <!-- Main text font: fetch in parallel with the page instead of after CSS -->
+    <link rel="preload" as="font" type="font/woff2" href={outfitLatinUrl} crossorigin />
 
     <!-- Hero photo is the Largest Contentful Paint element: fetch it first -->
     {Astro.url.pathname === "/" && (

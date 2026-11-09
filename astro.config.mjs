@@ -31,6 +31,12 @@ export default defineConfig({
   // deployable to GitHub Pages (or any static host) with no server at all.
   output: 'static',
 
+  // Inline the (small) stylesheet into the HTML so it doesn't block the
+  // first paint as a separate request.
+  build: {
+    inlineStylesheets: 'always',
+  },
+
   vite: {
     plugins: [tailwindcss()],
   },
