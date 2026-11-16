@@ -234,7 +234,7 @@ export default function HomePage({
                 <HeroMenu missing={missingMenuHrefs} />
               </BlurFade>
             </div>
-            <BlurFade fade={false} delay={BLUR_FADE_DELAY} className="order-1 md:order-2">
+            <BlurFade fade={false} delay={BLUR_FADE_DELAY} className="order-1 md:order-2 shrink-0">
               {/* Plain <img> (not Radix Avatar) so it's in the server HTML and
                   starts loading immediately: it's the page's LCP element. */}
               <img
